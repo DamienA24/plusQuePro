@@ -23,13 +23,15 @@ export default function MoviesTrending({ searchTerm }: { searchTerm: string }) {
 
   const [ref] = useIntersectionObserver(handleObserver);
 
-  if (error) return <LoadingError />;
+  if (error || !movies.length) return <LoadingError />;
 
   return (
     <>
       <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
         {movies &&
-          movies.map((movie) => <MovieCard movie={movie} key={movie.id} />)}
+          movies.map((movie, index) => (
+            <MovieCard movie={movie} key={`${movie.id}-${index}`} />
+          ))}
       </div>
       <div ref={ref}>{isLoadingMore && <Spinner />}</div>
     </>
