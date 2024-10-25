@@ -7,9 +7,6 @@ import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useInfiniteTMDB } from "@/hooks/useInfiniteTMDB";
 
 export default function MoviesTrending() {
-  /* const { data, error, isLoading } = useTMDB<TrendingResponse>(
-    API_ENDPOINTS.trending
-  ); */
   const { movies, error, isLoading, isLoadingMore, isReachingEnd, loadMore } =
     useInfiniteTMDB();
 
