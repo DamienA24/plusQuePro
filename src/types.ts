@@ -74,3 +74,11 @@ export interface CastMember {
 export interface Credits {
   cast: Array<CastMember>;
 }
+
+export interface MovieSearchBarProps {
+  onSearch: (term: string) => void;
+}
+
+export interface InfiniteTMDBProps {
+  searchTerm?: string;
+}

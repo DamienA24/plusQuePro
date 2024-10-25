@@ -4,6 +4,7 @@ import { Star, Calendar, Clock, ArrowLeft } from "lucide-react";
 
 import Spinner from "@/components/Spinner";
 import MovieMetadata from "@/components/MovieMetadata";
+import LoadingError from "@/components/LoadingError";
 import ActorCard from "@/components/ActorCard";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
@@ -40,18 +41,7 @@ export default function MoviePage() {
   }
 
   if (movieError || creditsError || !movie) {
-    return (
-      <div className="flex justify-center items-center min-h-screen">
-        <div className="text-center">
-          <h2 className="text-xl font-bold mb-2">An error occurred</h2>
-          <p className="text-muted-foreground">
-            {movieError?.message ||
-              creditsError?.message ||
-              "Unable to load data"}
-          </p>
-        </div>
-      </div>
-    );
+    return <LoadingError />;
   }
 
   const formatRuntime = (minutes: number) => {
@@ -78,7 +68,6 @@ export default function MoviePage() {
             className="w-full rounded-lg shadow-lg"
           />
 
-          {/* Metadata */}
           <div className="space-y-2">
             <MovieMetadata
               icon={Calendar}

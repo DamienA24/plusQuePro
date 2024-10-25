@@ -1,26 +1,27 @@
-import { useState } from "react";
-
+import { useRef } from "react";
+import { Search } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
 
-import { Search } from "lucide-react";
-
-export default function MovieSearchBar() {
-  const [searchTerm, setSearchTerm] = useState<string>("");
+import { MovieSearchBarProps } from "@/types";
+export default function MovieSearchBar({ onSearch }: MovieSearchBarProps) {
+  const searchInputRef = useRef<HTMLInputElement>(null);
 
   const handleSearch = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log(searchTerm);
+    const term = searchInputRef.current?.value;
+    if (term) {
+      onSearch(term);
+    }
   };
 
   return (
-    <form onSubmit={handleSearch} className="mb-8">
+    <form onSubmit={handleSearch} className="mb-8 mx-auto p-4">
       <div className="flex gap-2 w-full">
         <Input
           type="search"
           placeholder="Search movies..."
-          value={searchTerm}
-          onChange={(e) => setSearchTerm(e.target.value)}
+          ref={searchInputRef}
           className="flex-grow"
         />
         <Button type="submit" size="icon">

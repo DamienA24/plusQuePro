@@ -1,14 +1,15 @@
 import { useCallback } from "react";
 
+import LoadingError from "@/components/LoadingError";
 import MovieCard from "@/components/MovieCard";
 import Spinner from "@/components/Spinner";
 
 import { useIntersectionObserver } from "@/hooks/useIntersectionObserver";
 import { useInfiniteTMDB } from "@/hooks/useInfiniteTMDB";
 
-export default function MoviesTrending() {
-  const { movies, error, isLoading, isLoadingMore, isReachingEnd, loadMore } =
-    useInfiniteTMDB();
+export default function MoviesTrending({ searchTerm }: { searchTerm: string }) {
+  const { movies, error, isLoadingMore, isReachingEnd, loadMore } =
+    useInfiniteTMDB({ searchTerm });
 
   const handleObserver = useCallback(
     (entries: IntersectionObserverEntry[]) => {
@@ -22,7 +23,7 @@ export default function MoviesTrending() {
 
   const [ref] = useIntersectionObserver(handleObserver);
 
-  if (error) return <div>failed to load</div>;
+  if (error) return <LoadingError />;
 
   return (
     <>
