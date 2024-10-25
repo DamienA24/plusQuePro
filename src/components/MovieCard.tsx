@@ -1,15 +1,24 @@
+import { useNavigate } from "react-router-dom";
+
 import { Card, CardContent } from "@/components/ui/card";
 import { TrendingMovie } from "@/types";
 
 export default function MovieCard({ movie }: { movie: TrendingMovie }) {
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    navigate(`/movie/${movie.id}`);
+  };
+
   return (
-    <Card className="transition-all duration-300 hover:shadow-xl hover:shadow-primary/20">
+    <Card className="cursor-pointer transition-all duration-300  hover:shadow-xl hover:shadow-primary/20">
       <CardContent className="p-4 space-y-4">
         <div className="overflow-hidden rounded">
           <img
             src={`http://image.tmdb.org/t/p/original${movie.poster_path}`}
             alt={movie.title}
             className="w-full h-auto object-cover transition-transform duration-300 hover:scale-105"
+            onClick={handleClick}
           />
         </div>
 
