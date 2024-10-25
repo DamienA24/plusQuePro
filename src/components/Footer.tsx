@@ -6,8 +6,8 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16">
         <div className="h-full flex items-center justify-center">
           <p className="text-gray-600 flex items-center gap-2">
-            Créé avec <Heart className="w-4 h-4 text-red-500 fill-red-500" /> en
-            utilisant
+            Created with <Heart className="w-4 h-4 text-red-500 fill-red-500" />{" "}
+            using
             <a
               href="https://www.themoviedb.org/"
               target="_blank"
