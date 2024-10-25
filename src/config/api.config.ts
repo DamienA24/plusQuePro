@@ -15,6 +15,7 @@ export const API_ENDPOINTS = {
   trending: "/trending/movie/day",
   search: "/search/movie",
   movie: (id: string) => `/movie/${id}`,
+  cast: (id: string) => `/movie/${id}/credits`,
 } as const;
 
 export const createTMDBUrl = (
