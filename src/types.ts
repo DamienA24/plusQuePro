@@ -19,23 +19,25 @@ export interface FetchOptions {
 
 export interface TrendingResponse {
   page: number;
-  results: Array<{
-    backdrop_path: string | null;
-    id: number;
-    title: string;
-    original_title: string;
-    overview: string;
-    poster_path: string | null;
-    media_type: "movie";
-    adult: boolean;
-    original_language: string;
-    genre_ids: number[];
-    popularity: number;
-    release_date: string; // format "YYYY-MM-DD"
-    video: boolean;
-    vote_average: number;
-    vote_count: number;
-  }>;
+  results: Array<TrendingMovie>;
   total_pages: number;
   total_results: number;
+}
+
+export interface TrendingMovie {
+  backdrop_path: string | null;
+  id: number;
+  title: string;
+  original_title: string;
+  overview: string;
+  poster_path: string | null;
+  media_type: "movie";
+  adult: boolean;
+  original_language: string;
+  genre_ids: number[];
+  popularity: number;
+  release_date: string; // format "YYYY-MM-DD"
+  video: boolean;
+  vote_average: number;
+  vote_count: number;
 }
